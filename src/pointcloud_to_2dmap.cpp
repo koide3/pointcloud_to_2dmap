@@ -63,6 +63,7 @@ int main(int argc, char** argv) {
   namespace po = boost::program_options;
   po::options_description description("pointcloud_to_2dmap");
   description.add_options()
+    ("help", "Produce help message")
     ("resolution,r", po::value<double>()->default_value(0.1), "Pixel resolution (meters / pix)")
     ("map_width,w", po::value<int>()->default_value(1024), "Map width [pix]")
     ("map_height,h", po::value<int>()->default_value(1024), "Map height [pix]")
@@ -84,6 +85,11 @@ int main(int argc, char** argv) {
     ).run(), vm
   );
   po::notify(vm);
+
+  if (vm.count("help")) {
+      std::cout << description << std::endl;
+      return 1;
+  }
 
   std::cout << "input_pcd     :" << vm["input_pcd"].as<std::string>() << std::endl;
   std::cout << "dest_directory:" << vm["dest_directory"].as<std::string>() << std::endl;
