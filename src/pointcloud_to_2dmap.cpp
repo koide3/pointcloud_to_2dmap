@@ -31,7 +31,7 @@ public:
       }
 
       int x = point.x * m2pix + map_width / 2;
-      int y = point.y * m2pix + map_width / 2;
+      int y = -point.y * m2pix + map_width / 2;
 
       if(x < 0 || x >= map_width || y < 0 || y >= map_height) {
         continue;
@@ -63,9 +63,9 @@ int main(int argc, char** argv) {
   namespace po = boost::program_options;
   po::options_description description("pointcloud_to_2dmap");
   description.add_options()
-    ("resolution,r", po::value<double>()->default_value(0.2), "Pixel resolution (meters / pix)")
-    ("map_width,w", po::value<int>()->default_value(512), "Map width [pix]")
-    ("map_height,h", po::value<int>()->default_value(512), "Map height [pix]")
+    ("resolution,r", po::value<double>()->default_value(0.1), "Pixel resolution (meters / pix)")
+    ("map_width,w", po::value<int>()->default_value(1024), "Map width [pix]")
+    ("map_height,h", po::value<int>()->default_value(1024), "Map height [pix]")
     ("min_points_in_pix", po::value<int>()->default_value(2), "Min points in a occupied pix")
     ("max_points_in_pix", po::value<int>()->default_value(5), "Max points in a pix for saturation")
     ("min_height", po::value<double>()->default_value(0.5), "Min height of clipping range")
