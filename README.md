@@ -20,3 +20,4 @@ pointcloud_to_2dmap:
   --dest_directory arg                  Destination directory
 ```
 
+![Screenshot_20200716_160239](https://user-images.githubusercontent.com/31344317/87637926-e7adfc00-c77d-11ea-8987-19dffe614fa5.png)
